@@ -5,7 +5,7 @@ import { Headphones } from "react-feather";
 
 const URL = "http://localhost:3000";
 
-function Host() {
+function Listen() {
     const socketRef = useRef(io(URL));
     useAudioStreamer(socketRef.current);
 
@@ -20,4 +20,4 @@ function Host() {
     );
 }
 
-export default Host;
+export default Listen;

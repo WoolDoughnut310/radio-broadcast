@@ -2,12 +2,12 @@ import { v4 as uuid } from "uuid";
 import { PassThrough } from "stream";
 import Throttle from "throttle";
 import { ffprobe } from "@dropb/ffprobe";
-import { path as _path } from "ffprobe-static";
-import { readdir, open } from "fs/promises";
+import ffprobeStatic from "ffprobe-static";
+import { readdir } from "fs/promises";
 import { createReadStream } from "fs";
 import { extname, join } from "path";
 
-ffprobe.path = _path;
+ffprobe.path = ffprobeStatic.path;
 
 class Queue {
     constructor() {
@@ -18,7 +18,7 @@ class Queue {
     }
 
     current() {
-        return this.tracks[index];
+        return this.tracks[this.index];
     }
 
     broadcast(chunk) {
